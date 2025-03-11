@@ -8,12 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDaoJDBCImpl implements UserDao {
-//    Connection conn;
 
     public UserDaoJDBCImpl() {
-//        conn = Util.getConn();
+
     }
 
+    @Override
     public void createUsersTable() {
         try(Connection connection = Util.getConn()) {
             String command = "CREATE TABLE IF NOT EXISTS users (id BIGINT AUTO_INCREMENT PRIMARY KEY," +
@@ -25,6 +25,7 @@ public class UserDaoJDBCImpl implements UserDao {
         }
     }
 
+    @Override
     public void dropUsersTable() {
         try(Connection connection = Util.getConn()) {
             String command = "DROP TABLE IF EXISTS users";
@@ -35,6 +36,7 @@ public class UserDaoJDBCImpl implements UserDao {
         }
     }
 
+    @Override
     public void saveUser(String name, String lastName, byte age) {
         try(Connection connection = Util.getConn()) {
             String command = "INSERT INTO users (name, lastname, age) VALUES (?, ?, ?)";
@@ -48,6 +50,7 @@ public class UserDaoJDBCImpl implements UserDao {
         }
     }
 
+    @Override
     public void removeUserById(long id) {
         try(Connection connection = Util.getConn()) {
             String command = "DELETE FROM users WHERE id = ?";
@@ -59,6 +62,7 @@ public class UserDaoJDBCImpl implements UserDao {
         }
     }
 
+    @Override
     public List<User> getAllUsers() {
         List<User> users = new ArrayList<>();
         try(Connection connection = Util.getConn()) {
@@ -81,6 +85,7 @@ public class UserDaoJDBCImpl implements UserDao {
         }
     }
 
+    @Override
     public void cleanUsersTable() {
         try(Connection connection = Util.getConn()) {
             String command = "DELETE FROM users";
