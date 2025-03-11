@@ -12,5 +12,4 @@ target/
 Thumbs.db
 
 .mvn/
-target/
 dependency-reduced-pom.xml
